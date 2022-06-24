@@ -8,12 +8,12 @@
 
 	async function findDog(){
 		const response = await fetch("https://dog.ceo/api/breeds/image/random");
-		const data = await response.text();
+		const data = await response.json();
 		if (response.ok){
 			document.getElementById('new-photo').style.display = 'block';
 		}
-		console.log(data);//data.message
-		src1 = data;
+		//console.log([data.message]);
+		src1 = data.message;
 	}
 
 </script>
@@ -31,8 +31,8 @@
 	</button>
 	
 	<div id = "new-photo" style = 'display:none'>
-		<img style = "width:230px" src = {src1} alt = "random-dog">
 		<p> Ok, let's find a friend! </p>
+		<img style = "width:230px" src = {src1} alt = "random-dog">
 	</div>
 	
 	<AboutMe/>
